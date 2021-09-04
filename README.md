@@ -1,7 +1,14 @@
 # Efficient baseline using pytorch template
 
 This pytorch template is for Image Classification of AI Competition.
-Diffrence between original pytorch-template and efficient baseline is [here](#difference-with-original-pytorch-template-and-efficient-baseline)
+Diffrence between original pytorch-template and efficient baseline is as follows.
+
+- Can use hard splitted valid_data_loader
+- Can add logs in wandb
+- Add custom_dataset & custom_valid_dataset
+- Can use albumentations not transforms in torchvision
+- Can see Confusion Matrix figure in tensorboard
+- Can change pretrained model (in timm) simply change to argument of config.
 
 ## Requirements
 ```
@@ -15,15 +22,6 @@ matplotlib >= 3.2.1
 seaborn >= 0.11.2
 timm >= 0.4.12
 ```
-
-## Difference with original pytorch-template and efficient baseline
-
-- Can use hard splitted valid_data_loader
-- Can add logs in wandb
-- Add custom_dataset & custom_valid_dataset
-- Can use albumentations not transforms in torchvision
-- Can see Confusion Matrix figure in tensorboard
-- Can change pretrained model (in timm) simply change to argument of config.
 
 ## Causions
 
