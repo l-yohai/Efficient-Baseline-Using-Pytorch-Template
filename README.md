@@ -35,6 +35,42 @@ timm >= 0.4.12
 
 2. ***And this code uses '.csv' file. Csv file should have image's path and label.***
 
+## Config
+
+```
+{
+    "name": "YOUR_MODEL_NAME",
+    "n_gpu": 1,
+    "arch": {
+        "type": "Model", # Model class name (in model.py)
+        "args": {
+            "num_classes": 10, # Number of classes
+            "pretrained_model": "efficientnet_b0" # This is pretrained model name of timm
+        }
+    },
+    "data_loader": {
+        "type": "CustomDataLoader", # your data loader
+        "args": {
+            "data_dir": "YOUR_DATA_DIR", # your data dirs
+            "batch_size": 128,
+            "shuffle": true,
+            "validation_split": 0.0,
+            "num_workers": 4,
+            "csv_path": "YOUR_TRAIN_CSV_FILE_PATH" # your csv path
+        }
+    },
+    "valid_data_loader": {
+        "type": "CustomValidDataLoader", # your valid data loader
+        "args": {
+            "data_dir": "YOUR_VALID_DATA_DIR", # your valid data dirs
+            ...
+            # your valid csv path if you don't have valid dataset, you can use Sampler in base_data_loader.py
+            "csv_path": "YOUR_VALID_CSV_FILE_PATH" 
+        }
+    },
+}
+```
+
 ## Appendix
 
 ![wandb](images/wandb.png)
