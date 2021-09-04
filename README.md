@@ -1,7 +1,7 @@
 # Efficient baseline using pytorch template
 
 This pytorch template is for Image Classification of AI Competition.
-Diffrence between original pytorch-template and efficient baseline is [here](#Difference-between-original-pytorch-template-and-efficient-baseline)
+Diffrence between original pytorch-template and efficient baseline is [here](#difference-with-original-pytorch-template-and-efficient-baseline)
 
 ## Requirements
 ```
@@ -29,17 +29,13 @@ timm >= 0.4.12
 
 1. ***You must change TODO***
     ```
-    - `custom_dataset.py` dataset path
-    - `data_loader.py` augmentations
-    - `model.py` if you use other model that is not in timm
-    - `train.py` init your wandb account
+    `custom_dataset.py` dataset path
+    `data_loader.py` augmentations
+    `model.py` if you use other model that is not in timm
+    `train.py` init your wandb account
     ```
 
 2. ***And this code uses '.csv' file. Csv file should have image's path and label.***
-
-## Reference
-
-[Pytorch Custom Dataset Examples](https://github.com/utkuozbulak/pytorch-custom-dataset-examples#incorporating-pandas)
 
 ## Appendix
 
@@ -48,3 +44,7 @@ timm >= 0.4.12
 ![tensorboard](images/tensorboard.png)
 
 ![confusion_matrix](images/confusion_matrix.png)
+
+## Reference
+
+[Pytorch Custom Dataset Examples](https://github.com/utkuozbulak/pytorch-custom-dataset-examples#incorporating-pandas)
