@@ -9,6 +9,8 @@ import model.model as module_arch
 from parse_config import ConfigParser
 from trainer import Trainer
 from utils import prepare_device
+from custom_dataset import CustomDatasetFromImages, CustomValidDatasetFromImages
+import wandb
 
 
 # fix random seeds for reproducibility
@@ -18,12 +20,24 @@ torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 np.random.seed(SEED)
 
+
 def main(config):
+    # TODO: init wandb account
+    wandb.init(project='YOUR_PROJECT_NAME', entity='YOUR_NAME')
+    wandb.config.update({'name': config['name'], 'pretrained_model': config['arch']['args']['pretrained_model'],
+                         'batch_size': config['data_loader']['args']['batch_size'],
+                         'optimizer': config['optimizer']['type'], 'loss': config['loss'],
+                         'lr': config['optimizer']['args']['lr'], 'epoch': config['trainer']['epochs']})
+
     logger = config.get_logger('train')
 
     # setup data_loader instances
     data_loader = config.init_obj('data_loader', module_data)
-    valid_data_loader = data_loader.split_validation()
+    # setup valid_data_loader instances
+    valid_data_loader = config.init_obj('valid_data_loader', module_data)
+    # NOTE: If you want to use unsplitted validation dataset or use RandomSampler,
+    # you can use below code
+    # valid_data_loader = data_loader.split_validation()
 
     # build model architecture, then print to console
     model = config.init_obj('arch', module_arch)
