@@ -4,6 +4,7 @@ This pytorch template is for Image Classification of AI Competition.
 Diffrence between original pytorch-template and efficient baseline is [here](#Difference-between-original-pytorch-template-and-efficient-baseline)
 
 ## Requirements
+```
 Python >= 3.5 (3.6 recommended)
 PyTorch >= 0.4 (1.2 recommended)
 tqdm (Optional for test.py)
@@ -13,6 +14,7 @@ sklearn >= 0.24.2
 matplotlib >= 3.2.1
 seaborn >= 0.11.2
 timm >= 0.4.12
+```
 
 ## Difference with original pytorch-template and efficient baseline
 
@@ -23,9 +25,9 @@ timm >= 0.4.12
 - Can see Confusion Matrix figure in tensorboard
 - Can change pretrained model (in timm) simply change to argument of config.
 
-## Warning
+## Causions
 
-1. *** You must change TODO ***
+1. ***You must change TODO***
     ```
     - `custom_dataset.py` dataset path
     - `data_loader.py` augmentations
@@ -33,7 +35,7 @@ timm >= 0.4.12
     - `train.py` init your wandb account
     ```
 
-2. *** And this code uses '.csv' file. Csv file should have image's path and label. ***
+2. ***And this code uses '.csv' file. Csv file should have image's path and label.***
 
 ## Reference
 
