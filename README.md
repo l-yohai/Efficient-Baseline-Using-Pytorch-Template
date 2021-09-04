@@ -28,11 +28,11 @@ timm >= 0.4.12
 ## Causions
 
 1. ***You must change TODO***
-    ```
-    `custom_dataset.py` dataset path
-    `data_loader.py` augmentations
-    `model.py` if you use other model that is not in timm
-    `train.py` init your wandb account
+    ```shell
+    custom_dataset.py # dataset path
+    data_loader.py # augmentations
+    model.py # if you use other model that is not in timm
+    train.py # init your wandb account
     ```
 
 2. ***And this code uses '.csv' file. Csv file should have image's path and label.***
