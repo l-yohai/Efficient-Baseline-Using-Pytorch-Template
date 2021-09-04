@@ -3,12 +3,16 @@ import torch
 from torchvision.utils import make_grid
 from base import BaseTrainer
 from utils import inf_loop, MetricTracker
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 class Trainer(BaseTrainer):
     """
     Trainer class
     """
+
     def __init__(self, model, criterion, metric_ftns, optimizer, config, device,
                  data_loader, valid_data_loader=None, lr_scheduler=None, len_epoch=None):
         super().__init__(model, criterion, metric_ftns, optimizer, config)
@@ -66,7 +70,7 @@ class Trainer(BaseTrainer):
 
         if self.do_validation:
             val_log = self._valid_epoch(epoch)
-            log.update(**{'val_'+k : v for k, v in val_log.items()})
+            log.update(**{'val_' + k: v for k, v in val_log.items()})
 
         if self.lr_scheduler is not None:
             self.lr_scheduler.step()
@@ -93,6 +97,16 @@ class Trainer(BaseTrainer):
                 for met in self.metric_ftns:
                     self.valid_metrics.update(met.__name__, met(output, target))
                 self.writer.add_image('input', make_grid(data.cpu(), nrow=8, normalize=True))
+
+                # Confusion Matrix
+                conf_mat = confusion_matrix(
+                    target.cpu(), torch.argmax(output, dim=1).cpu())
+                fig = plt.figure()
+                sns.heatmap(conf_mat, cmap=plt.cm.Blues, annot=True, fmt='g')
+                plt.show()
+                plt.xlabel('predicted label')
+                plt.ylabel('true label')
+                self.writer.add_figure('fig', fig)
 
         # add histogram of model parameters to the tensorboard
         for name, p in self.model.named_parameters():
