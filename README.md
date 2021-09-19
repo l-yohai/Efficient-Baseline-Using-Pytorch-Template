@@ -1,6 +1,6 @@
 # Efficient baseline using pytorch template
 
-This pytorch template is for Image Classification of AI Competition.
+This template is for Image Classification of AI Competition.
 Diffrence between original pytorch-template and efficient baseline is as follows.
 
 - Can use hard splitted valid_data_loader
